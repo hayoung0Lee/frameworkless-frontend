@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rendering</title>
+  </head>
+  <body>
+    <div style="width: 400px; margin: auto">
+      <section class="todoapp">
+        <header class="header">
+          <h1>todos</h1>
+          <input
+            class="new-todo"
+            autofocus=""
+            placeholder="What needs to be done?"
+          />
+        </header>
+        <section class="main">
+          <input type="checkbox" id="toggle-all" class="toggle-call" />
+          <label for="toggle-all">Mark all as complete</label>
+          <ul class="todo-list"></ul>
+        </section>
+        <footer class="footer">
+          <span class="todo-count"></span>
+          <ul class="filters">
+            <li><a href="#/">All</a></li>
+            <li><a href="#/active">Active</a></li>
+            <li><a href="#/completed">Completed</a></li>
+          </ul>
+          <button class="cleaar-completed">Clear completed</button>
+        </footer>
+      </section>
+      <footer class="info">
+        <p>Double-click to edit a todo</p>
+      </footer>
+    </div>
+    <script src="./renderTodo.js"></script>
+    <script src="./stat.js"></script>
+  </body>
+</html>
