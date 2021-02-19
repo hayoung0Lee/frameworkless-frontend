@@ -9,6 +9,16 @@ const app = express();
 let todos = [];
 
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:1234");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,POST,PUT,PATCH,DELETE,OPTIONS"
+  );
+  next();
+});
 
 app.get(`/api/todos`, (req, res) => {
   res.send(todos);
