@@ -1,51 +1,16 @@
-const setHeaders = (xhr, headers) => {
-  Object.entries(headers).forEach((entry) => {
-    const [name, value] = entry;
+import axios from "axios";
 
-    xhr.setRequestHeader(name, value);
-  });
-};
-
-const parseResponse = (xhr) => {
-  const { status, responseText } = xhr;
-
-  let data;
-
-  //   HTTP Status 204 (No Content) indicates that the server has
-  //   successfully fulfilled the request and that there is no content
-  //    to send in the response payload body. ... For example,
-  //    you may want to return status 204 (No Content) in UPDATE
-  //     operations where request payload is large enough not to
-  //     transport back and forth.
-  console.log("xhr", xhr);
-  if (status !== 204) {
-    data = JSON.parse(responseText);
-  }
-
-  return { status, data };
-};
 const request = (params) => {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
+  const { method = "GET", url, headers = {}, body = {} } = params;
 
-    const { method = "GET", url, headers = {}, body = {} } = params;
+  const config = {
+    url,
+    method,
+    headers,
+    data: body,
+  };
 
-    xhr.open(method, url);
-
-    setHeaders(xhr, headers);
-
-    xhr.send(JSON.stringify(body));
-
-    xhr.onerror = () => {
-      reject(new Error("HTTP Error"));
-    };
-
-    xhr.ontimeout = () => {
-      reject(new Error("Timeout Error"));
-    };
-
-    xhr.onload = () => resolve(parseResponse(xhr));
-  });
+  return axios(config);
 };
 
 const get = async (url, headers) => {
