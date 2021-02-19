@@ -1,19 +1,3 @@
-// stat.js
-// http://mrdoob.github.io/stats.js/
-//   (function () {
-//     var script = document.createElement("script");
-//     script.onload = function () {
-//       var stats = new Stats();
-//       document.body.appendChild(stats.dom);
-//       requestAnimationFrame(function loop() {
-//         stats.update();
-//         requestAnimationFrame(loop);
-//       });
-//     };
-//     script.src = "//mrdoob.github.io/stats.js/build/stats.min.js";
-//     document.head.appendChild(script);
-//   })();
-
 // requestAnimationFrame callback을 사용해 현재 렌더링 사이클과 다음사이클 사이의 시간 추적하기. 콜백이 1초내에 호출되는 횟수를 추적하면된다
 let panel = -1;
 let start = -1;

@@ -60,7 +60,7 @@ const getTodos = [
 
 const state = {
   todos: getTodos,
-  currentFilter: "All",
+  currentFilter: "Completed",
 };
 
 const main = document.querySelector(".todoapp");
@@ -69,3 +69,7 @@ window.requestAnimationFrame(() => {
   const newMain = getElement(main, state);
   main.replaceWith(newMain);
 });
+
+const registry = {
+  todos: () => console.log("todos"),
+};
